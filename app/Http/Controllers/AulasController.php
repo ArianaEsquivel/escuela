@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\aulas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AulasController extends Controller
 {
@@ -14,7 +15,7 @@ class AulasController extends Controller
      */
     public function index()
     {
-        //
+        return aulas::all();
     }
 
     /**
@@ -35,7 +36,8 @@ class AulasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aulas=aulas::create($request->all());
+        return $aulas;
     }
 
     /**
@@ -67,9 +69,12 @@ class AulasController extends Controller
      * @param  \App\aulas  $aulas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, aulas $aulas)
+    public function update(Request $request, int $id)
     {
-        //
+        $affected = DB::table('aulas')
+              ->where('id', $id)
+              ->update(['seccion' => $request->seccion, 
+              'carrera' => $request->carrera]);
     }
 
     /**
@@ -78,8 +83,8 @@ class AulasController extends Controller
      * @param  \App\aulas  $aulas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(aulas $aulas)
+    public function destroy(int $id)
     {
-        //
+        DB::table('aulas')->where('id', '=', $id)->delete();
     }
 }

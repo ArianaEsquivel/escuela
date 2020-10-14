@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\alumnos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlumnosController extends Controller
 {
@@ -14,7 +15,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        //
+        return alumnos::all();
     }
 
     /**
@@ -35,7 +36,8 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alumnos=alumnos::create($request->all());
+        return $alumnos;
     }
 
     /**
@@ -67,9 +69,13 @@ class AlumnosController extends Controller
      * @param  \App\alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, alumnos $alumnos)
+    public function update(Request $request, int $matricula)
     {
-        //
+        $affected = DB::table('alumnos')
+              ->where('matricula', $matricula)
+              ->update(['nombre' => $request->nombre, 
+              'promedio' => $request->promedio, 
+              'aula' => $request->aula]);
     }
 
     /**
@@ -78,8 +84,8 @@ class AlumnosController extends Controller
      * @param  \App\alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(alumnos $alumnos)
+    public function destroy(int $matricula)
     {
-        //
+        DB::table('alumnos')->where('matricula', '=', $matricula)->delete();
     }
 }

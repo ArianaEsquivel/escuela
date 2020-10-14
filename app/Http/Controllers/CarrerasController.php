@@ -82,8 +82,8 @@ class CarrerasController extends Controller
      * @param  \App\carreras  $carreras
      * @return \Illuminate\Http\Response
      */
-    public function destroy(carreras $carreras)
+    public function destroy(int $id)
     {
-        //
+        DB::table('carreras')->where('id', '=', $id)->delete();
     }
 }
