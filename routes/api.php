@@ -38,3 +38,10 @@ Route::get('alumnos', 'AlumnosController@index');
 Route::post('alumnos', 'AlumnosController@store');
 Route::put("alumnos/{id}", "AlumnosController@update")-> where("id", "[0-9]+");
 Route::put("alumnos/{id}", "AlumnosController@update")-> where("id", "[0-9]+");
+
+
+Route::get('promedio', "AlumnosController@index" )->middleware('validar.promedio');
+Route::get('promedio/seccion', 'AlumnosController@index')-> middleware('validar.promedio', 'validar.seccion');
+
+Route::get('valnombre', "AlumnosController@index" )->middleware('validar.nombre:Selena Gomezs');
+

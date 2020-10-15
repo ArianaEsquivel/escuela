@@ -15,6 +15,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
+        //return $alumno = \App\alumnos::where('nombre', 'Selena Gomezs')->first();
         return alumnos::all();
     }
 
