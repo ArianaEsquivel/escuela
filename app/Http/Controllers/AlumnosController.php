@@ -16,6 +16,7 @@ class AlumnosController extends Controller
     public function index()
     {
         //return $alumno = \App\alumnos::where('nombre', 'Selena Gomezs')->first();
+        //$this->middleware('validar.nombre:'.$request->nombre);
         return alumnos::all();
     }
 

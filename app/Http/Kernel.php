@@ -43,6 +43,12 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'grupo' => [
+
+            'validar.seccion' => \App\Http\Middleware\ValidarSeccion::class,
+            'validar.promedio' => \App\Http\Middleware\ValidarPromedio::class,
+
+        ]
     ];
 
     /**

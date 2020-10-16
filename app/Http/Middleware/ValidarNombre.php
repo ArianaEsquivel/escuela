@@ -18,11 +18,17 @@ class ValidarNombre
         Log::info($nombre);
         //$user = DB::table('alumnos')->where('nombre', $nombre)->first();
         $alumno = \App\alumnos::where('nombre', $nombre)->first();
+        
         Log::info($alumno);
         if (!$alumno) {
             return abort(400);
         }
 
         return $next($request);
+    }
+
+    public function terminate($request, $response)
+    {
+        file_put_contents(__DIR__ . '/abc.text', 'Si jala el terminate');
     }
 }
