@@ -43,7 +43,7 @@ Route::put("alumnos/{id}", "AlumnosController@update")-> where("id", "[0-9]+");
 Route::get('promedio', "AulasController@index" )->middleware('validar.promedio');
 Route::get('seccion', 'AlumnosController@index')-> middleware('validar.seccion');
 
-Route::get('grupo', 'AlumnosController@index')-> middleware('grupo');
+Route::get('grupo/pys', 'AlumnosController@index')-> middleware('grupo');
 Route::get('promedio/seccion', 'AlumnosController@index')-> middleware('validar.promedio', 'validar.seccion');
 
 

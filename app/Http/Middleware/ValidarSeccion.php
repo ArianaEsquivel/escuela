@@ -15,7 +15,7 @@ class ValidarSeccion
      */
     public function handle($request, Closure $next)
     {
-        if ($request->seccion == 'A') {
+        if ($request->seccion != 'A') {
             return abort(401);
         }
         return $next($request);

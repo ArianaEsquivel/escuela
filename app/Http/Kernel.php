@@ -47,7 +47,6 @@ class Kernel extends HttpKernel
 
             'validar.seccion' => \App\Http\Middleware\ValidarSeccion::class,
             'validar.promedio' => \App\Http\Middleware\ValidarPromedio::class,
-
         ]
     ];
 
